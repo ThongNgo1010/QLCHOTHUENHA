@@ -27,12 +27,24 @@ namespace QLCHOTHUENHA
             txtMaNha.ResetText();
             txtTenChuNha.ResetText();
             txtGiaChoThue.ResetText();
+            if (rdRoi.Checked == false)
+                rdRoi.Checked = true;
             load_DSNha();
         }
 
         private void Xoa(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Data_Provider.moKetNoi();
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                int i = dataGridView1.CurrentCell.RowIndex;
+                string maNha = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                string sql = string.Format("Delete from NHA where MaNha ='{0}'", maNha);
+                Data_Provider.updateData(sql);
+                load_DSNha();
+            }
+            Data_Provider.dongKetNoi();
         }
 
         private void Sua(object sender, EventArgs e)
@@ -46,17 +58,18 @@ namespace QLCHOTHUENHA
             string sql1 = string.Format("select count (*) from NHA where MaNha='{0}'", txtMaNha.Text);
             if (Data_Provider.checkData(sql1) == 0 && !string.IsNullOrEmpty(txtTenChuNha.Text) && ktraSo(txtGiaChoThue.Text))
             {
-                string sql = "insert into NHA(MaNha, TenChuNha, GiaThue, DaCHoThue " +
-                    "value(@mn, @tcn, @gt, @dct)";
-                bool dct = rdRoi.Checked = true ? true : false;
-                object[] value = { txtMaNha.Text, txtTenChuNha.Text, txtGiaChoThue.Text, dct };
-                string[] name = { "@mn", "@tcn", "@gct", "dct" };
+                string sql = "insert into NHA(MaNha, TenChuNha, GiaThue, DaCHoThue)" +
+                    "values(@mn, @tcn, @gt, @dct)";
+                bool dct = rdRoi.Checked == true ? true : false;
+                object[] value = { txtMaNha.Text, txtTenChuNha.Text, float.Parse(txtGiaChoThue.Text), dct };
+                string[] name = { "@mn", "@tcn", "@gt", "@dct" };
 
                 Data_Provider.updateData(sql, value, name);
                 load_DSNha();
             }
             else
                 MessageBox.Show("Không hợp lệ!");
+
             Data_Provider.dongKetNoi();
         }
 
@@ -71,7 +84,7 @@ namespace QLCHOTHUENHA
         public void load_DSNha()
         {
             string sql = "select * from NHA";
-            dataGridView1.DataSource = Data_Provider.getData(sql);
+            dataGridView1.DataSource = Data_Provider.getTable(sql);
         }
         #endregion //load danh sách Nhà
         private void Load_nha(object sender, EventArgs e)

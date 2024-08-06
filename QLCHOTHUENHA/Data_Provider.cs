@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace QLCHOTHUENHA
 {
-    internal static class Data_Provider
+    public static class Data_Provider
     {
         private static SqlConnection cnn;
         private static SqlDataAdapter da;
@@ -26,7 +26,7 @@ namespace QLCHOTHUENHA
             cnn.Close();
         }
 
-        public static DataTable getData(string sql)
+        public static DataTable getTable(string sql)
         {
             DataTable dt = new DataTable();
             da = new SqlDataAdapter(sql, cnn);
@@ -52,7 +52,7 @@ namespace QLCHOTHUENHA
             int i = 0;
             cmd = new SqlCommand(sql, cnn);
             i = (int)cmd.ExecuteScalar();
-            cmd.Dispose ();
+            cmd.Dispose();
             return i;   
         }
     }
