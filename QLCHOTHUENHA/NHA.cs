@@ -21,6 +21,7 @@ namespace QLCHOTHUENHA
             btnXoa.Click += new EventHandler(Xoa);
             btnLamMoi.Click += new EventHandler(Lam_Moi);
         }
+        
 
         private void Lam_Moi(object sender, EventArgs e)
         {
@@ -49,7 +50,24 @@ namespace QLCHOTHUENHA
 
         private void Sua(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Data_Provider.moKetNoi();
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn đổi thông tin không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dr == DialogResult.Yes)
+            {
+                if (!string.IsNullOrEmpty(txtTenChuNha.Text) && ktraSo(txtGiaChoThue.Text))
+                {
+                    string sql = string.Format("update NHA set MaNha=@mn, TenChuNha=@tcn, GiaThue=@gt, DaCHoThue=@dct where MaNha = '{0}'", txtMaNha.Text);
+                    bool dct = rdRoi.Checked == true ? true : false;
+                    object[] value = { txtMaNha.Text, txtTenChuNha.Text, float.Parse(txtGiaChoThue.Text), dct };
+                    string[] name = { "@mn", "@tcn", "@gt", "@dct" };
+
+                    Data_Provider.updateData(sql, value, name);
+                    load_DSNha();
+                }
+                else
+                    MessageBox.Show("Không hợp lệ!");
+            }
+            Data_Provider.dongKetNoi();
         }
 
         private void Them(object sender, EventArgs e)
@@ -92,6 +110,21 @@ namespace QLCHOTHUENHA
             Data_Provider.moKetNoi();
             load_DSNha();
             Data_Provider.dongKetNoi();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = dataGridView1.CurrentCell.RowIndex;
+            txtMaNha.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            txtTenChuNha.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+            txtGiaChoThue.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+            string dct = dataGridView1.Rows[i].Cells[3].Value.ToString();
+            if(dct == "True")
+            {
+                rdRoi.Checked = true;
+            }    
+            else
+                rdChua.Checked = true;
         }
     }
 }
