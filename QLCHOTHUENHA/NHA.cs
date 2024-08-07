@@ -30,6 +30,8 @@ namespace QLCHOTHUENHA
             txtGiaChoThue.ResetText();
             if (rdRoi.Checked == false)
                 rdRoi.Checked = true;
+            txtMaNha.Enabled = true;
+
             load_DSNha();
         }
 
@@ -115,6 +117,8 @@ namespace QLCHOTHUENHA
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = dataGridView1.CurrentCell.RowIndex;
+            txtMaNha.Enabled = false;
+
             txtMaNha.Text = dataGridView1.Rows[i].Cells[0].Value.ToString();
             txtTenChuNha.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
             txtGiaChoThue.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();

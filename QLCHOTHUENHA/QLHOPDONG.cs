@@ -15,6 +15,14 @@ namespace QLCHOTHUENHA
         public frmHopDong()
         {
             InitializeComponent();
+            Load += new EventHandler(Load_HopDong);
+        }
+
+        private void Load_HopDong(object sender, EventArgs e)
+        {
+            string sql = "select A.MaNha, A.TenChuNha, A.GiaThue, A.DaCHoThue" +
+                "from NHA as A, HOPDONG as B, KHACHTHUENHA as C" +
+                "where A.MaNha=B.MaNha, C.MaKhach=B.MaKhach";
         }
     }
 }
