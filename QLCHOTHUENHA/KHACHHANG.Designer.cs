@@ -46,6 +46,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -56,6 +57,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.txtTenKhach);
             this.groupBox1.Controls.Add(this.txtMaKhach);
@@ -90,9 +92,9 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(24, 202);
+            this.dateTimePicker1.Location = new System.Drawing.Point(144, 216);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(316, 29);
+            this.dateTimePicker1.Size = new System.Drawing.Size(196, 29);
             this.dateTimePicker1.TabIndex = 2;
             // 
             // groupBox2
@@ -229,6 +231,15 @@
             this.btnLamMoi.Text = "Làm Mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 216);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 24);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Ngày sinh";
+            // 
             // frmKhachThue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -274,5 +285,6 @@
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.Label label3;
     }
 }
