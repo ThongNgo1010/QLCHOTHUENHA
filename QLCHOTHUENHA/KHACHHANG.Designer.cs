@@ -38,7 +38,7 @@
             this.txtMaKhach = new System.Windows.Forms.TextBox();
             this.txtTenKhach = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTim = new System.Windows.Forms.TextBox();
             this.btnTim = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -147,7 +147,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnTim);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.txtTim);
             this.groupBox3.Location = new System.Drawing.Point(6, 260);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(409, 78);
@@ -155,15 +155,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tìm kiếm";
             // 
-            // textBox3
+            // txtTim
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(7, 29);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(277, 29);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.Text = "Nhập mã khách thuê";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTim.Location = new System.Drawing.Point(7, 29);
+            this.txtTim.Name = "txtTim";
+            this.txtTim.Size = new System.Drawing.Size(277, 29);
+            this.txtTim.TabIndex = 0;
+            this.txtTim.Text = "Nhập mã khách thuê";
+            this.txtTim.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnTim
             // 
@@ -278,7 +278,7 @@
         private System.Windows.Forms.TextBox txtMaKhach;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnTim;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTim;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox5;
